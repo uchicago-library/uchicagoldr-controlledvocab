@@ -4,12 +4,12 @@ from controlledvocab.lib import ControlledVocabulary
 class PremisVocabulary(ControlledVocabulary):
     def __init__(self, edit_before_build=False, check_children=True,
                  check_patterns=True, case_sensitive=True):
+
         contains = ['premis']
-        child_vocabs = [EventVocabulary]
-#        child_vocabs = [ObjectVocabulary,
-#                        EventVocabulary,
-#                        RightsVocabulary,
-#                        AgentVocabulary]
+        child_vocabs = [ObjectVocabulary,
+                        EventVocabulary,
+                        RightsVocabulary,
+                        AgentVocabulary]
         patterns = None
 
         ControlledVocabulary.__init__(self,
@@ -25,15 +25,14 @@ class PremisVocabulary(ControlledVocabulary):
 class EventVocabulary(ControlledVocabulary):
     def __init__(self, edit_before_build=False, check_children=True,
                  check_patterns=True, case_sensitive=True):
+
         contains = ['eventType',
                     'eventDateTime']
-
-        child_vocabs = None
-#        child_vocabs = [EventIdentifierVocabulary,
-#                        EventDetailInformationVocabulary,
-#                        EventOutcomeInformationVocabulary,
-#                        LinkingAgentIdentifierVocabulary,
-#                        LinkingObjectIdentifierVocabulary]
+        child_vocabs = [EventIdentifierVocabulary,
+                        EventDetailInformationVocabulary,
+                        EventOutcomeInformationVocabulary,
+                        LinkingAgentIdentifierVocabulary,
+                        LinkingObjectIdentifierVocabulary]
         patterns = None
 
         ControlledVocabulary.__init__(self,
@@ -44,3 +43,5 @@ class EventVocabulary(ControlledVocabulary):
                                       check_children=check_children,
                                       check_patterns=check_patterns,
                                       case_sensitive=case_sensitive)
+
+

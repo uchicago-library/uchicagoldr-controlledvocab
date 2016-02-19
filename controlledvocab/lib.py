@@ -100,3 +100,45 @@ class ControlledVocabulary(object):
 
     def get_patterns(self):
         return self.patterns
+
+
+class ControlledVocabFromSource(object):
+    def __init__(self, source):
+        self.source = source
+        self.contains = self.read_contains(self.source)
+        self.child_vocabs = self.read_child_vocabs(self.source)
+        self.patterns = self.read_patterns(self.source)
+        self.edit_before_build = self.read_edit_before_build(self.source)
+        self.check_children = self.read_check_children(self.source)
+        self.check_patterns = self.read_check_patterns(self.source)
+        self.case_sensitive = self.read_case_sensitive(self.source)
+
+    def read_contains(source):
+        raise NotImplemented
+
+    def read_child_vocabs(source):
+        raise NotImplemented
+
+    def read_patterns(source):
+        raise NotImplemented
+
+    def read_edit_before_build(source):
+        raise NotImplemented
+
+    def read_check_children(source):
+        raise NotImplemented
+
+    def read_check_patterns(source):
+        raise NotImplemented
+
+    def read_case_sensitive(source):
+        raise NotImplemented
+
+    def build(self):
+        return ControlledVocabulary(contains=self.contains,
+                                    child_vocabs=self.child_vocabs,
+                                    patterns=self.patterns,
+                                    edit_before_build=self.edit_before_build,
+                                    check_children=self.check_children,
+                                    check_patterns=self.check_patterns,
+                                    case_sensitive=self.case_sensitive)
