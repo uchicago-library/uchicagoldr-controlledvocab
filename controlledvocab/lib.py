@@ -61,12 +61,20 @@ class ControlledVocabulary(object):
         else:
             self.built_child_vocabs = []
             for child_vocab in self.child_vocabs:
-                self.built_child_vocabs.append(
-                    child_vocab(check_children=self.check_children,
-                                check_patterns=self.check_patterns,
-                                case_sensitive=self.case_sensitive,
-                                edit_before_build=self.edit_before_build)
-                )
+                if isinstance(child_vocab, ControlledVocabFromSource):
+                    self.built_child_vocabs.append(
+                        child_vocab.build(check_children=self.check_children,
+                                          check_patterns=self.check_patterns,
+                                          case_sensitive=self.case_sensitive,
+                                          edit_before_build=self.edit_before_build)
+                    )
+                else:
+                    self.built_child_vocabs.append(
+                        child_vocab(check_children=self.check_children,
+                                    check_patterns=self.check_patterns,
+                                    case_sensitive=self.case_sensitive,
+                                    edit_before_build=self.edit_before_build)
+                    )
 
     def build_patterns(self):
         if self.patterns is None:
@@ -104,37 +112,76 @@ class ControlledVocabulary(object):
 
 class ControlledVocabFromSource(object):
     def __init__(self, source):
+        self.set_source(source)
+
+    def set_source(self, source):
         self.source = source
-        self.contains = self.read_contains(self.source)
-        self.child_vocabs = self.read_child_vocabs(self.source)
-        self.patterns = self.read_patterns(self.source)
-        self.edit_before_build = self.read_edit_before_build(self.source)
-        self.check_children = self.read_check_children(self.source)
-        self.check_patterns = self.read_check_patterns(self.source)
-        self.case_sensitive = self.read_case_sensitive(self.source)
 
-    def read_contains(source):
+    def get_source(self):
+        return self.source
+
+    def read_contains(self, source=None):
+        if source is None:
+            source = self.source
         raise NotImplemented
 
-    def read_child_vocabs(source):
+    def read_child_vocabs(self, source=None):
+        if source is None:
+            source = self.source
         raise NotImplemented
 
-    def read_patterns(source):
+    def read_patterns(self, source=None):
+        if source is None:
+            source = self.source
         raise NotImplemented
 
-    def read_edit_before_build(source):
+    def read_edit_before_build(self, source=None):
+        if source is None:
+            source = self.source
         raise NotImplemented
 
-    def read_check_children(source):
+    def read_check_children(self, source=None):
+        if source is None:
+            source = self.source
         raise NotImplemented
 
-    def read_check_patterns(source):
+    def read_check_patterns(self, source=None):
+        if source is None:
+            source = self.source
         raise NotImplemented
 
-    def read_case_sensitive(source):
+    def read_case_sensitive(self, source=None):
+        if source is None:
+            source = self.source
         raise NotImplemented
 
-    def build(self):
+    def build(self, check_children=None, check_patterns=None,
+              case_sensitive=None, edit_before_build=None):
+
+        self.contains = self.read_contains()
+        self.child_vocabs = self.read_child_vocabs()
+        self.patterns = self.read_patterns()
+
+        if edit_before_build is None:
+            self.edit_before_build = self.read_edit_before_build()
+        else:
+            self.edit_before_build = edit_before_build
+
+        if check_children is None:
+            self.check_children = self.read_check_children()
+        else:
+            self.check_children = check_children
+
+        if check_patterns is None:
+            self.check_patterns = self.read_check_patterns()
+        else:
+            self.check_patterns = check_patterns
+
+        if case_sensitive is None:
+            self.case_sensitive = self.read_case_sensitive()
+        else:
+            self.case_sensitive = case_sensitive
+
         return ControlledVocabulary(contains=self.contains,
                                     child_vocabs=self.child_vocabs,
                                     patterns=self.patterns,
