@@ -1,4 +1,5 @@
 from re import compile, IGNORECASE
+from json import load as jsonload
 
 
 class ControlledVocabulary(object):
@@ -62,12 +63,11 @@ class ControlledVocabulary(object):
             self.built_child_vocabs = []
             for child_vocab in self.child_vocabs:
                 if isinstance(child_vocab, ControlledVocabFromSource):
-                    self.built_child_vocabs.append(
-                        child_vocab.build(check_children=self.check_children,
+                        x = child_vocab.build(check_children=self.check_children,
                                           check_patterns=self.check_patterns,
                                           case_sensitive=self.case_sensitive,
                                           edit_before_build=self.edit_before_build)
-                    )
+                        self.built_child_vocabs.append(x)
                 else:
                     self.built_child_vocabs.append(
                         child_vocab(check_children=self.check_children,
@@ -80,6 +80,7 @@ class ControlledVocabulary(object):
         if self.patterns is None:
             self.built_patterns = []
         else:
+            self.built_patterns = []
             for pattern in self.patterns:
                 if self.case_sensitive is False:
                     self.built_patterns.append(compile(pattern, IGNORECASE))
@@ -189,3 +190,102 @@ class ControlledVocabFromSource(object):
                                     check_children=self.check_children,
                                     check_patterns=self.check_patterns,
                                     case_sensitive=self.case_sensitive)
+
+
+class ControlledVocabFromJson(ControlledVocabFromSource):
+    def __init__(self, source):
+        ControlledVocabFromSource.__init__(self, source)
+
+    def read_contains(self, source=None):
+        if source is None:
+            source = self.source
+        data = None
+        with open(self.source, 'r') as f:
+            data = jsonload(f)
+        try:
+            return data['contains']
+        except KeyError:
+            return []
+
+    def read_child_vocabs(self, source=None):
+        if source is None:
+            source = self.source
+        data = None
+        with open(self.source, 'r') as f:
+            data = jsonload(f)
+        try:
+            result = [ControlledVocabFromJson(x) for x in data['child_vocabs']]
+            return result
+        except KeyError:
+            return []
+
+    def read_patterns(self, source=None):
+        if source is None:
+            source = self.source
+        data = None
+        with open(self.source, 'r') as f:
+            data = jsonload(f)
+        try:
+            return data['patterns']
+        except KeyError:
+            return []
+
+    def read_edit_before_build(self, source=None):
+        if source is None:
+            source = self.source
+        data = None
+        with open(self.source, 'r') as f:
+            data = jsonload(f)
+        try:
+            x = data['edit_before_build']
+            if x == 'True':
+                return True
+            if x == 'False':
+                return False
+        except KeyError:
+            return False
+
+    def read_check_children(self, source=None):
+        if source is None:
+            source = self.source
+        data = None
+        with open(self.source, 'r') as f:
+            data = jsonload(f)
+        try:
+            x = data['check_children']
+            if x == 'True':
+                return True
+            if x == 'False':
+                return False
+        except KeyError:
+            return True
+
+    def read_check_patterns(self, source=None):
+        if source is None:
+            source = self.source
+        data = None
+        with open(self.source, 'r') as f:
+            data = jsonload(f)
+        try:
+            x = data['check_patterns']
+            if x == 'True':
+                return True
+            if x == 'False':
+                return False
+        except KeyError:
+            return True
+
+    def read_case_sensitive(self, source=None):
+        if source is None:
+            source = self.source
+        data = None
+        with open(self.source, 'r') as f:
+            data = jsonload(f)
+        try:
+            x = data['case_sensitive']
+            if x == 'True':
+                return True
+            if x == 'False':
+                return False
+        except KeyError:
+            return False
