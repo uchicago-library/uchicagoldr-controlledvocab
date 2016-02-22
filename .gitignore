@@ -1,0 +1,15 @@
+build/*
+controlledvocab/__pycache__/*
+bin/__pycache__/*
+controlledvocab/*pyc
+bin/*pyc
+bin/#*#
+bin/*#*
+controlledvocab/#*$
+controlledvocab/*#*
+controlledvocab/*~
+bin/*~
+#*#
+*~
+env/*
+.DS_Store
