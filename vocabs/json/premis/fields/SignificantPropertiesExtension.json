@@ -1,0 +1,10 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [],
+    "check_children": "True",
+    "name": "SignificantPropertiesExtension_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [],
+    "patterns": []
+}

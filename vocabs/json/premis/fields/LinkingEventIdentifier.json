@@ -1,0 +1,13 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [],
+    "check_children": "True",
+    "name": "LinkingEventIdentifier_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "linkingEventIdentifierType",
+        "linkingEventIdentifierValue"
+    ],
+    "patterns": []
+}

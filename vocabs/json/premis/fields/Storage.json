@@ -1,0 +1,15 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [
+        "ContentLocation.json"
+    ],
+    "check_children": "True",
+    "name": "Storage_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "contentLocation",
+        "storageMedium"
+    ],
+    "patterns": []
+}

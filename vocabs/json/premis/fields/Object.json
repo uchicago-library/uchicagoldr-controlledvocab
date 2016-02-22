@@ -1,0 +1,40 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [
+        "ObjectIdentifier.json",
+        "PreservationLevel.json",
+        "SignificantProperties.json",
+        "ObjectCharacteristics.json",
+        "Storage.json",
+        "SignatureInformation.json",
+        "EnvironmentFunction.json",
+        "EnvironmentDesignation.json",
+        "EnvironmentRegistry.json",
+        "EnvironmentExtension.json",
+        "Relationship.json",
+        "LinkingEventIdentifier.json",
+        "LinkingRightsStatementIdentifier.json"
+    ],
+    "check_children": "True",
+    "name": "Object_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "objectIdentifier",
+        "objectCategory",
+        "preservationLevel",
+        "significantProperties",
+        "objectCharacteristics",
+        "originalName",
+        "storage",
+        "signatureInformation",
+        "environmentFunction",
+        "environmentDesignation",
+        "environmentRegistry",
+        "environmentExtension",
+        "relationship",
+        "linkingEventIdentifier",
+        "linkingRightsStatementIdentifier"
+    ],
+    "patterns": []
+}

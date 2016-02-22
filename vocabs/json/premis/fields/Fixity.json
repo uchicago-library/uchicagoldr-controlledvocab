@@ -1,0 +1,14 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [],
+    "check_children": "True",
+    "name": "Fixity_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "messageDigestAlgorithm",
+        "messageDigest",
+        "messageDigestOriginator"
+    ],
+    "patterns": []
+}

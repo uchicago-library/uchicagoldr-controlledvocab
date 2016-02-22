@@ -1,0 +1,20 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [
+        "CopyrightDocumentationIdentifier.json",
+        "CopyrightApplicableDates.json"
+    ],
+    "check_children": "True",
+    "name": "CopyrightInformation_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "copyrightStatus",
+        "copyrightJurisdiction",
+        "copyrightStatusDeterminationDate",
+        "copyrightNote",
+        "copyrightDocumentationIdentifier",
+        "copyrightApplicableDates"
+    ],
+    "patterns": []
+}

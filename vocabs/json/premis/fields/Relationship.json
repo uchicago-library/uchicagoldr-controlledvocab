@@ -1,0 +1,20 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [
+        "RelatedObjectIdentifier.json",
+        "RelatedEventIdentifier.json"
+    ],
+    "check_children": "True",
+    "name": "Relationship_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "relationshipType",
+        "relationshipSubType",
+        "relatedObjectIdentifier",
+        "relatedEventIdentifier",
+        "relatedEnvironmentPurpose",
+        "relatedEnvironmentCharacteristic"
+    ],
+    "patterns": []
+}

@@ -1,0 +1,26 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [
+        "AgentIdentifier.json",
+        "AgentExtension.json",
+        "LinkingEventIdentifier.json",
+        "LinkingRightsStatementIdentifier.json",
+        "LinkingEnvironmentIdentifier.json"
+    ],
+    "check_children": "True",
+    "name": "Agent_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "agentIdentifier",
+        "agentName",
+        "agentType",
+        "agentVersion",
+        "agentNote",
+        "agentExtension",
+        "linkingEventIdentifier",
+        "linkingRightsStatementIdentifier",
+        "linkingEnvironmentIdentifier"
+    ],
+    "patterns": []
+}

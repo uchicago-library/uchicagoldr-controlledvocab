@@ -1,0 +1,15 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [
+        "EventDetailExtension.json"
+    ],
+    "check_children": "True",
+    "name": "EventDetailInformation_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "eventDetail",
+        "eventDetailExtension"
+    ],
+    "patterns": []
+}

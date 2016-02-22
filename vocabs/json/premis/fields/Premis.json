@@ -1,0 +1,13 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": ["Object.json", 
+                     "Event.json", 
+                     "Rights.json", 
+                     "Agent.json"],
+    "check_children": "True",
+    "name": "PremisNode_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": ["premis"],
+    "patterns": []
+}

@@ -1,0 +1,18 @@
+{
+    "check_patterns": "True",
+    "child_vocabs": [
+        "LicenseDocumentationIdentifier.json",
+        "LicenseApplicableDates.json"
+    ],
+    "check_children": "True",
+    "name": "LicenseInformation_Fields",
+    "case_sensitive": "True",
+    "edit_before_build": "False",
+    "contains": [
+        "licenseDocumentationIdentifier",
+        "licenseTerms",
+        "licenseNote",
+        "licenseApplicableDates"
+    ],
+    "patterns": []
+}
