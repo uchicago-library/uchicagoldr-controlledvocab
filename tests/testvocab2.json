@@ -1,3 +1,4 @@
 {
- "contains":["that"]
+ "contains":["that"],
+ "child_vocabs":["testvocab3.json"]
 }

@@ -1,4 +1,4 @@
 {
  "contains":["this"],
- "child_vocabs":["/Users/balsamo/Envs/ldr_dev/repos/uchicagoldr-controlledvocab/tests/testvocab2.json"]
+ "child_vocabs":["testvocab2.json", "depth1/testvocab1a.json"]
 }

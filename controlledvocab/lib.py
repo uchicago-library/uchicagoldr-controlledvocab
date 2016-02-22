@@ -1,5 +1,6 @@
 from re import compile, IGNORECASE
 from json import load as jsonload
+from os.path import split, join
 
 
 class ControlledVocabulary(object):
@@ -195,6 +196,7 @@ class ControlledVocabFromSource(object):
 class ControlledVocabFromJson(ControlledVocabFromSource):
     def __init__(self, source):
         ControlledVocabFromSource.__init__(self, source)
+        self.sourceroot = split(source)[0]
 
     def read_contains(self, source=None):
         if source is None:
@@ -214,7 +216,7 @@ class ControlledVocabFromJson(ControlledVocabFromSource):
         with open(self.source, 'r') as f:
             data = jsonload(f)
         try:
-            result = [ControlledVocabFromJson(x) for x in data['child_vocabs']]
+            result = [ControlledVocabFromJson(join(self.sourceroot,x)) for x in data['child_vocabs']]
             return result
         except KeyError:
             return []
